@@ -5,7 +5,7 @@
 
 <html lang="en">
   <head>
-	<title>Monopoly - connexion</title>
+	<title>Monopoly - inscription</title>
 	<link href="styles.css" rel="stylesheet">
 	<link href="assets/bootstrap.css" rel="stylesheet">
   </head>
@@ -14,7 +14,19 @@
 	
 	<div class="container">
 		<form role="form" class="login-form" autocomplete="off" method="post">
-			<h2 style="background-color:lightblue; padding:25px 20px">Ici la case depart!</h2>
+			<h2 style="background-color:lightblue; padding:25px 20px">Inscrivez-vous !</h2>
+			<div class="form-group">
+				<label for="lastname">Nom:</label>
+				<input type="text" class="form-control" id="lastname" placeholder="Entrez votre nom">
+			</div>
+			<div class="form-group">
+				<label for="firstname">Prenom:</label>
+				<input type="text" class="form-control" id="firstname" placeholder="Entrez votre prenom">
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" class="form-control" id="email" placeholder="Entrez votre email">
+			</div>
 			<div class="form-group">
 				<label for="pseudo">Pseudo:</label>
 				<input type="text" class="form-control" id="pseudo" placeholder="Entrez votre pseudo">
@@ -23,13 +35,12 @@
 				<label for="mdp">Mot de passe:</label>
 				<input type="password" class="form-control" id="mdp" placeholder="Entrez votre mot de passe">
 			</div>
-			<div class="checkbox">
-				<label><input type="checkbox">Se souvenir de moi</label>
-			</div>
+			
 			<button type="submit" class="btn btn-default">Valider</button>
-			<button type="submit" class="btn btn-default">S'inscrire</button>
+			<button type="submit" class="btn btn-default">Annuler</button>
 		</form>
 	</div>
 	</body>
-	
-</html>
+  
+  
+  
