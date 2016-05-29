@@ -29,11 +29,15 @@
 			</div>
 			<div class="form-group">
 				<label for="pseudo">Pseudo:</label>
-				<input type="text" class="form-control" id="pseudo" placeholder="Entrez votre pseudo">
+				<input type="text" class="form-control" id="pseudo" placeholder="Entrez un pseudo">
 			</div>
 			<div class="form-group">
 				<label for="mdp">Mot de passe:</label>
-				<input type="password" class="form-control" id="mdp" placeholder="Entrez votre mot de passe">
+				<input type="password" class="form-control" id="mdp" placeholder="Entrez un mot de passe">
+			</div>
+			<div class="form-group">
+				<label for="confirm_mdp">Confirmer mot de passe:</label>
+				<input type="password" class="form-control" id="confirm_mdp" placeholder="Confirmer mot de passe">
 			</div>
 			
 			<button type="submit" class="btn btn-default">Valider</button>
