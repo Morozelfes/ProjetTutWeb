@@ -1,0 +1,17 @@
+
+
+.login-form {
+	
+	max-width:400px;
+	margin: 100px auto 0;
+}
+
+.login-body {
+	
+	background-image:url(images/monop2.png);
+	background-color: white;
+	background-position: center center;
+	background-repeat: no-repeat;
+	min-height: 800px;
+	
+}
