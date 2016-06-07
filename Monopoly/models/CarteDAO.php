@@ -35,17 +35,17 @@ class CarteDAO
 		//Rom, A TOI DE JOUER
 	}
 	
-	public function addMember()
+	public function addCard()
 	{
 		//Rom, A TOI DE JOUER
 	}
 	
-	public function deleteMember()
+	public function deleteCard()
 	{
 		//Rom, A TOI DE JOUER
 	}
 	
-	public function updateMember()
+	public function updateOwner()
 	{
 		//Rom, A TOI DE JOUER
 	}

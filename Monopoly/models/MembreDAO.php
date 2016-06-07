@@ -5,14 +5,14 @@ class MembreDAO
 	private static $INSTANCE;
 	private $connection;
 	
-	private getInstance()
+	private function getInstance()
 	{
 		if (self::$INSTANCE == null)
 			$this->INSTANCE = new CarteDAO();
 		return $INSTANCE;
 	}
 	
-	private __construct()
+	private  function __construct()
 	{
 		$username = 'root';
 		$password = '';
@@ -29,18 +29,17 @@ class MembreDAO
 		
 		
 	}
-	
 	public function findAll()
 	{
 		//Rom, A TOI DE JOUER
 	}
 	
-	public function addCard()
+	public function addMember()
 	{
 		//Rom, A TOI DE JOUER
 	}
 	
-	public function deleteCard()
+	public function deleteMember()
 	{
 		//Rom, A TOI DE JOUER
 	}
@@ -49,3 +48,4 @@ class MembreDAO
 	{
 		//Rom, A TOI DE JOUER
 	}
+	
