@@ -27,7 +27,7 @@ class Controller
 	
 	public function updateData()
 	{
-		$this->cards = CarteDAO::getInstance()->findAllAdd();
+		$this->cards = CarteDAO::getInstance()->findAllCard();
 		$this->members = MemberDAO::getInstance()->findAllMember();
 	}
 	
@@ -179,10 +179,94 @@ class Controller
 			die('Error: '.$e->getMessage());
 			return false;
 		}
-		// A APPELLER SI UN JOUEUR EST AJOUTE OU EN CAS D ACHAT
+		// A APPELLER SI UN JOUEUR EST AJOUTE OU EN CAS D ACHAT, DE GAINS, ...
+	}
+	
+	public function deleteCard($id)
+	{
+		try
+		{
+			CarteDAO::deleteCard($id);
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
 	}
 	
 	
+	public function addresses()
+	{
+		try
+		{
+			return CarteDAO::findAllAdd();
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+	}
+	
+	public function districts()
+	{
+		try
+		{
+			return CarteDAO::findAllDistrict();
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+	}
+	
+	public function getAddressesByDistrict($idDistrict)
+	{
+		try
+		{
+			return CarteDAO::findAdd($idDistrict);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+	}
+	
+	public function getAddressesByColor($color)
+	{
+		$color = strtolower($color);
+		
+		try
+		{
+			$id = CarteDAO::getDisctrictByColor($color);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+		
+		return $this->getAddressesByDistrict($id);
+		
+	}
+	
+	public function updateOwner($idtaker, $idCard)
+	{
+		try
+		{
+			CarteDAO::updateOwner($idtaker, $idCard);
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+	}
 	
 	
 	
