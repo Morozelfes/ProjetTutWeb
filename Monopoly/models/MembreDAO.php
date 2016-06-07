@@ -29,7 +29,7 @@ class MembreDAO
 		
 		
 	}
-	public function findAll()
+	public function findAllMember()
 	{
 		$statement = $this->connection->prepare("SELECT * FROM membre ;");
 		$statement->execute();
