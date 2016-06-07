@@ -123,6 +123,22 @@ class MembreDAO
 		return $statement->rowCount();
 	}
 	
+	public function testPseudo($pseudo)
+	{
+		$statement = $this->connection->prepare("SELECT * FROM membre WHERE pseudo = :pseudo ;");
+		$statement->bindParam(':pseudo', $pseudo);
+		$statement->execute();	
+		return $statement->rowCount();
+	}
+	
+	public function testConnexion($pseudo,$mdp)
+	{
+		$statement = $this->connection->prepare("SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp ;");
+		$statement->bindParam(':pseudo', $pseudo);
+		$statement->bindParam(':mdp', $mdp);
+		$statement->execute();	
+		return $statement->rowCount();
+	}
 	}
 	
 	
