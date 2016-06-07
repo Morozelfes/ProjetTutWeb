@@ -82,8 +82,17 @@ class CarteDAO
 		$resultArray = $statement->fetchAll();
 		
 		return $resultArray;
-	}	
+	}
 	
+	public function findDistrict($couleur)
+	{
+		$statement = $this->connection->prepare("SELECT * FROM quartier WHERE couleur = :couleur ;");
+		$statement->bindParam(':couleur',$couleur);
+		$statement->execute();
+		$resultArray = $statement->fetchAll();
+		
+		return $resultArray;
+	}	
 	public function findAdd($id)
 	{
 		$statement = $this->connection->prepare("SELECT * FROM adresse  WHERE id_quartier = :id;");
@@ -94,9 +103,12 @@ class CarteDAO
 		return $resultArray;
 	}
 	
-	public function updateOwner()
+	public function updateOwner($idtaker,$idcarte)
 	{
-		//Rom, A TOI DE JOUER
+		$statement = $this->connection->prepare("UPDATE  carte SET id_membre = :idmembre WHERE id_carte = :id;" )
+		$statement->bindParam(':idmembre', $idtaker);
+		$statement->bindParam(':idcarte',$idcarte);
+		$statement->execute();
 	}
 	
 	
