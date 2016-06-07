@@ -2,9 +2,8 @@
 
 <html>
 	<?php
-		include 'sessions.php';
-		
-		if sessionStarted()
+		include_once 'Controller/Controller.class.php';
+		$controller = new Controller();
 			
 		
 	?>

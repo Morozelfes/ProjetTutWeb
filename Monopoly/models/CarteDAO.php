@@ -5,7 +5,7 @@ class CarteDAO
 	private static $INSTANCE;
 	private $connection;
 	
-	private function getInstance()
+	public static function getInstance()
 	{
 		if (self::$INSTANCE == null)
 			self::$INSTANCE = new CarteDAO();
@@ -16,15 +16,16 @@ class CarteDAO
 	{
 		$username = 'root';
 		$password = '';
-		$path = 'mysql:dbname=monoply;host=localhost';
+		$path = 'mysql:dbname=monopoly;host=localhost';
 		
 		try
 		{
 			$this->connection = new PDO($path,$username,$password);
+			$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 		catch(PDOException $e)
 		{
-			'Error: '.$e->getMessage();
+			die('Error: '.$e->getMessage());
 		}
 		
 		
@@ -61,7 +62,7 @@ class CarteDAO
 	
 	public function deleteCard($id)
 	{
-		$statement = $this->connection->prepare("DELETE FROM carte WHERE id_carte = :id;" )
+		$statement = $this->connection->prepare("DELETE FROM carte WHERE id_carte = :id;" );
 		$statement->bindParam(':id',$id);
 		$statement->execute();
 	}
@@ -122,7 +123,7 @@ class CarteDAO
 	
 	public function updateOwner($idtaker,$idcarte)
 	{
-		$statement = $this->connection->prepare("UPDATE  carte SET id_membre = :idmembre WHERE id_carte = :id;" )
+		$statement = $this->connection->prepare("UPDATE  carte SET id_membre = :idmembre WHERE id_carte = :id;" );
 		$statement->bindParam(':idmembre', $idtaker);
 		$statement->bindParam(':idcarte',$idcarte);
 		$statement->execute();

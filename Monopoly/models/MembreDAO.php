@@ -5,26 +5,27 @@ class MembreDAO
 	private static $INSTANCE;
 	private $connection;
 	
-	private function getInstance()
+	public static function getInstance()
 	{
 		if (self::$INSTANCE == null)
-			$this->INSTANCE = new CarteDAO();
-		return $INSTANCE;
+			self::$INSTANCE = new MembreDAO();
+		return self::$INSTANCE;
 	}
 	
 	private  function __construct()
 	{
 		$username = 'root';
 		$password = '';
-		$path = 'mysql:dbname=monoply;host=localhost';
+		$path = 'mysql:dbname=monopoly;host=localhost';
 		
 		try
 		{
 			$this->connection = new PDO($path,$username,$password);
+			$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 		catch(PDOException $e)
 		{
-			'Error: '.$e->getMessage();
+			die('Error: '.$e->getMessage());
 		}
 		
 		
@@ -54,7 +55,7 @@ class MembreDAO
 	
 	public function deleteMember($id)
 	{
-		$statement = $this->connection->prepare("DELETE FROM membre WHERE id_membre = :id;" )
+		$statement = $this->connection->prepare("DELETE FROM membre WHERE id_membre = :id;" );
 		$statement->bindParam(':id',$id);
 		$statement->execute();
 	}
@@ -62,37 +63,38 @@ class MembreDAO
 	public function updateMember($key,$value,$id)
 	{
 		switch ($key) {
-					case nom :	$statement = $this->connection->prepare("UPDATE  membre SET nom = :value WHERE id_membre = :id;" )
+					case nom :	$statement = $this->connection->prepare("UPDATE  membre SET nom = :value WHERE id_membre = :id;" );
 										$statement->bindParam(':value', $value);
 										$statement->bindParam(':id',$id);
 										$statement->execute();
 								break;
-					case prenom :	$statement = $this->connection->prepare("UPDATE  membre SET prenom = :value WHERE id_membre = :id;" )
+					case prenom :	$statement = $this->connection->prepare("UPDATE  membre SET prenom = :value WHERE id_membre = :id;" );
 										$statement->bindParam(':name', $value);
 										$statement->bindParam(':id',$id);
 										$statement->execute();
 								break;
-					case email :	$statement = $this->connection->prepare("UPDATE  membre SET email = :value WHERE id_membre = :id;" )
+					case email :	$statement = $this->connection->prepare("UPDATE  membre SET email = :value WHERE id_membre = :id;" );
 										$statement->bindParam(':name', $value);
 										$statement->bindParam(':id',$id);
 										$statement->execute();
 								break;
-					case mdp :	$statement = $this->connection->prepare("UPDATE  membre SET mdp = :value WHERE id_membre = :id;" )
+					case mdp :	$statement = $this->connection->prepare("UPDATE  membre SET mdp = :value WHERE id_membre = :id;" );
 										$statement->bindParam(':name', $value);
 										$statement->bindParam(':id',$id);
 										$statement->execute();
 								break;
-					case pseudo :	$statement = $this->connection->prepare("UPDATE  membre SET pseudo = :value WHERE id_membre = :id;" )
+					case pseudo :	$statement = $this->connection->prepare("UPDATE  membre SET pseudo = :value WHERE id_membre = :id;" );
 										$statement->bindParam(':name', $value);
 										$statement->bindParam(':id',$id);
 										$statement->execute();
 								break;			
-					case admin :	$statement = $this->connection->prepare("UPDATE  membre SET admin = :value WHERE id_membre = :id;" )
+					case admin :	$statement = $this->connection->prepare("UPDATE  membre SET admin = :value WHERE id_membre = :id;" );
 										$statement->bindParam(':name', $value);
 										$statement->bindParam(':id',$id);
 										$statement->execute();
 								break;		
 		}
+	}
 	
 	public function findMember($id)
 	{

@@ -1,26 +1,17 @@
 <?php
 
-include('../models/CarteDAO.php');
-include('../models/MemberDAO.php');
+include_once('models/CarteDAO.php');
+include_once('models/MembreDAO.php');
 
 class Controller
 {
 	
-	private static $INSTANCE;
-	
 	private $cards;
 	private $members;
 		
-		
-	public static function getInstance()
-	{
-		if (self::$INSTANCE == null)
-			self::$INSTANCE = new Controller();
-		return self::$INSTANCE;
-	}
 	
 	
-	private function __construct()
+	public function __construct()
 	{
 		$this->updateData();
 	}
@@ -28,23 +19,24 @@ class Controller
 	public function updateData()
 	{
 		$this->cards = CarteDAO::getInstance()->findAllCard();
-		$this->members = MemberDAO::getInstance()->findAllMember();
+		$this->members = MembreDAO::getInstance()->findAllMember();
 	}
 	
-	public 
 	
 	//     MEMBER FUNCTIONS -- INTERACTION WITH DATABASE
 	
-	public function getMember()
+	public function getMembers()
 	{
-		if(isset $this->members)
-			return $members;
+		if(isset ($this->members))
+			return ($this->members);
 		else
+		{
 			echo 'Ton getmember marche pas sous-merde';
 			return false;
+		}	
 	}
 	
-	public function getMember($id)
+	public function getMemberById($id)
 	{
 		try
 		{
@@ -62,7 +54,7 @@ class Controller
 	{
 		try
 		{
-			MemberDAO::addMember($name,$surname,$mail,$psw,$nick,$adm);
+			MemberDAO::getInstance()->addMember($name,$surname,$mail,$psw,$nick,$adm);
 			$this->updateData();
 			return true;
 		}
@@ -78,7 +70,7 @@ class Controller
 	{		
 		try
 		{
-			MemberDAO::deleteMember($id);
+			MemberDAO::getInstance()->deleteMember($id);
 			$this->updateData();
 			return true;
 		}
@@ -94,7 +86,7 @@ class Controller
 	{
 		try
 		{
-			MemberDAO::updateMember($key, $value, $id);
+			MemberDAO::getInstance()->updateMember($key, $value, $id);
 			$this->updateData();
 			return true;
 		}
@@ -111,7 +103,7 @@ class Controller
 	{
 		try
 		{
-			return MemberDAO::findAdmin();
+			return MemberDAO::getInstance()->findAdmin();
 		}
 		catch(PDOException $e)
 		{
@@ -124,7 +116,7 @@ class Controller
 	{
 		try
 		{
-			if (MemberDAO::testConnection == 1)
+			if (MemberDAO::getInstance()->testConnection == 1)
 				return true;
 			else
 				return false;
@@ -142,8 +134,8 @@ class Controller
 	
 	public function getCard()
 	{
-		if (isset $cards)
-			return $cards;
+		if (isset ($this->cards))
+			return $this->cards;
 		else
 		{
 			echo 'ton getCard marche pas sous merde';
@@ -153,25 +145,24 @@ class Controller
 	}
 	
 	
-	public function getCard($idOwner);
+	public function getCardByOwner($idOwner)
 	{
 		try
 		{
-			return CarteDAO::getCardFromOwner($idOwner);
+			return CarteDAO::getInstance()->getCardFromOwner($idOwner);
 		}
 		catch(PDOException $e)
 		{
 			die('Error: '.$e->getMessage());
 			return false;
 		}
-		//SURCHARGE DE LA FONCTION PRECEDENTE. RETOURNE TABLEAU DE CARTES APPARTENANT AU JOUEUR.
 	}
 	
 	public function addCard($adresse,$membre)
 	{
 		try
 		{
-			CarteDAO::addCard($adresse,$membre);
+			CarteDAO::getInstance()->addCard($adresse,$membre);
 			return true;
 		}
 		catch(PDOException $e)
@@ -186,7 +177,7 @@ class Controller
 	{
 		try
 		{
-			CarteDAO::deleteCard($id);
+			CarteDAO::getInstance()->deleteCard($id);
 			return true;
 		}
 		catch(PDOException $e)
@@ -194,6 +185,7 @@ class Controller
 			die('Error: '.$e->getMessage());
 			return false;
 		}
+		// A APPELLER EN CAS DE SUPPRESSION DE JOUEUR
 	}
 	
 	
@@ -201,7 +193,7 @@ class Controller
 	{
 		try
 		{
-			return CarteDAO::findAllAdd();
+			return CarteDAO::getInstance()->findAllAdd();
 		}
 		catch(PDOException $e)
 		{
@@ -214,7 +206,7 @@ class Controller
 	{
 		try
 		{
-			return CarteDAO::findAllDistrict();
+			return CarteDAO::getInstance()->findAllDistrict();
 		}
 		catch(PDOException $e)
 		{
@@ -227,7 +219,7 @@ class Controller
 	{
 		try
 		{
-			return CarteDAO::findAdd($idDistrict);
+			return CarteDAO::getInstance()->findAdd($idDistrict);
 		}
 		catch(PDOException $e)
 		{
@@ -242,7 +234,7 @@ class Controller
 		
 		try
 		{
-			$id = CarteDAO::getDisctrictByColor($color);
+			$id = CarteDAO::getInstance()->getDisctrictByColor($color);
 		}
 		catch(PDOException $e)
 		{
@@ -258,7 +250,7 @@ class Controller
 	{
 		try
 		{
-			CarteDAO::updateOwner($idtaker, $idCard);
+			CarteDAO::getInstance()->updateOwner($idtaker, $idCard);
 			return true;
 		}
 		catch(PDOException $e)
