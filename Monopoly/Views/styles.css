@@ -1,17 +1,63 @@
 
+	.login-form {
+		
+		max-width:400px;
+		margin: 100px auto 0;
+	}
+/*
+	.login-body {
+		
+		background-image:url(images/monop2.png);
+		background-color: white;
+		background-position: center center;
+		background-repeat: no-repeat;
+		min-height: 800px;
+		
+	}
+*/
 
-.login-form {
+	.container-fluid{
+		
+		padding: 60px 50px;
+		
+	}
 	
-	max-width:400px;
-	margin: 100px auto 0;
-}
+	.img-container{
+		background-image:url(images/Monopoly.svg);
+		background-color: white;
+		background-position: center center;
+		background-repeat: no-repeat;
+		padding: 1px 1px 1px 1px;
+		margin: 1px;
+		
+	}
 
-.login-body {
+	.navbar {
+		margin-bottom: 0;
+		background-color: #0099cc;
+		z-index: 9999;
+		border: 0;
+		font-size: 12px !important;
+		line-height: 1.42857143 !important;
+		letter-spacing: 4px;
+		border-radius: 0;
+	}
+
+	.navbar li a, .navbar .navbar-brand {
+		color: #fff !important;
+	}
+
+	.navbar-nav li a:hover, .navbar-nav li.active a {
+		color: #f4511e !important;
+		background-color: #fff !important;
+	}
+
+	.navbar-default .navbar-toggle {
+		border-color: transparent;
+		color: #fff !important;
+	}
 	
-	background-image:url(images/monop2.png);
-	background-color: white;
-	background-position: center center;
-	background-repeat: no-repeat;
-	min-height: 800px;
-	
-}
+	.jumbotron { 
+    background-color: #0099cc;
+    color: #ffffff;
+	}

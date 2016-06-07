@@ -11,6 +11,10 @@
   </head>
   
   <body class="login-body">
+  
+	<div class="container-fluid img-container">
+		<h3>lala</h3>
+	</div>
 	
 	<div class="container">
 		<form role="form" class="login-form" autocomplete="off" method="post">
