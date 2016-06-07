@@ -30,19 +30,68 @@ class CarteDAO
 		
 	}
 	
-	public function findAll()
+	public function findAllCard()
 	{
-		//Rom, A TOI DE JOUER
+		$statement = $this->connection->prepare("SELECT * FROM carte ;");
+		$statement->execute();
+		
+		$resultArray = $statement->fetchAll();
+		
+		return $resultArray;
 	}
 	
-	public function addCard()
+	public function findCardFromOwner($id)
 	{
-		//Rom, A TOI DE JOUER
+		$statement = $this->connection->prepare("SELECT * FROM carte WHERE id_membre = :id;");
+		$statement->bindParam(':id',$id);
+		$statement->execute();
+		
+		$resultArray = $statement->fetchAll();
+		
+		return $resultArray;
 	}
 	
-	public function deleteCard()
+	public function addCard($adresse,$membre)
 	{
-		//Rom, A TOI DE JOUER
+		$statement = $this->connection->prepare("INSERT INTO  carte (id_adresse,id_membre) VALUES (:idad,:idmem) ;");
+		$statement->bindParam(':idad', $adresse);
+		$statement->bindParam(':idmem', $membre);
+		$statement->execute();
+	}
+	
+	public function deleteCard($id)
+	{
+		$statement = $this->connection->prepare("DELETE FROM carte WHERE id_carte = :id;" )
+		$statement->bindParam(':id',$id);
+		$statement->execute();
+	}
+	
+	public function findAllAdd()
+	{
+		$statement = $this->connection->prepare("SELECT * FROM adresse ;");
+		$statement->execute();
+		$resultArray = $statement->fetchAll();
+		
+		return $resultArray;
+	}
+	
+	public function findAllDistrict()
+	{
+		$statement = $this->connection->prepare("SELECT * FROM quartier ;");
+		$statement->execute();
+		$resultArray = $statement->fetchAll();
+		
+		return $resultArray;
+	}	
+	
+	public function findAdd($id)
+	{
+		$statement = $this->connection->prepare("SELECT * FROM adresse  WHERE id_quartier = :id;");
+		$statement->bindParam(':id',$id);
+		$statement->execute();
+		$resultArray = $statement->fetchAll();
+		
+		return $resultArray;
 	}
 	
 	public function updateOwner()
