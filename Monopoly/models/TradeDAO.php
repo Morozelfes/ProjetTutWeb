@@ -40,13 +40,25 @@ class TradeDAO
 		return $resultArray;
 	}
 	
-	public function addTrade($id_membre)
+	public function addTrade($id_membre,$id_receveur)
 	{
-		$statement = $this->connection->prepare("INSERT INTO  echange (id_membre,confirmed) VALUES (:membre, 0) ;");
+		$statement = $this->connection->prepare("INSERT INTO  echange (id_membre,id_receveur,confirmed) VALUES (:membre, :receveur,0) ;");
 		$statement->bindParam(':membre', $id_membre);
+		$statement->bindParam(':receveur', $id_receveur);
 		$statement->execute();
 		
 		
+	}
+	
+	public function findTradePerso($id)
+	{
+		$statement = $this->connection->prepare("SELECT * FROM echange WHERE id_receveur = :id ;");
+		$statement->bindParam(':id',$id);
+		$statement->execute();
+		
+		$resultArray = $statement->fetchAll();
+		
+		return $resultArray;
 	}
 	
 	public function lastTrade()
@@ -60,7 +72,7 @@ class TradeDAO
 	public function addCarteEchange($id_carteDemande,$id_CarteOffre)
 	{
 		$trade =  lastTrade();
-		$statement = $this->connection->prepare("INSERT INTO  carteEchange (id_trade,id_CarteD,id_CarteO) VALUES (:trade,:CD,:CO) ;");
+		$statement = $this->connection->prepare("INSERT INTO  carteechange (id_trade,id_CarteD,id_CarteO) VALUES (:trade,:CD,:CO) ;");
 		$statement->bindParam(':trade',  $trade);
 		$statement->bindParam(':CD', $CD);
 		$statement->bindParam(':CO', $CO);
@@ -84,7 +96,7 @@ class TradeDAO
 	
 	public function findCarteTrade($id)
 	{
-		$statement = $this->connection->prepare("SELECT * FROM carteEchange WHERE id_trade = :id;");
+		$statement = $this->connection->prepare("SELECT * FROM carteechange WHERE id_trade = :id;");
 		$statement->bindParam(':id',$id);
 		$statement->execute();
 		
