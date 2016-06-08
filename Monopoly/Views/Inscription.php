@@ -14,20 +14,21 @@
   
 	
 	<div class="container">
-		<?php
-		if (isset($_GET['inscriptionMissing']))
-			echo '<div class="alert-danger"><h3>Il faut remplir tous les champs !</h3></div>';
 		
-		if (isset($_GET['mdp_notidentical']))
-			echo '<div class="alert-danger"><h3>Les champs "mot de passe" et "confirmer mot de passe" ne sont pas identiques</h3></div>';
-		
-		if (isset($_GET['validEmail']))
-			echo '<div class="alert-danger"><h3>Email deja utilise</h3></div>';
-		
-		if (isset($_GET['validPseudo']))
-			echo '<div class="alert-danger"><h3>Pseudo deja utilise</h3></div>';?>
 	
 		<form role="form" class="login-form" autocomplete="off" method="post" action="../index.php?inscription=true">
+		<?php
+			if (isset($_GET['inscriptionMissing']))
+				echo '<div class="alert-danger"><h3>Il faut remplir tous les champs !</h3></div>';
+			
+			if (isset($_GET['mdp_notidentical']))
+				echo '<div class="alert-danger"><h3>Les champs "mot de passe" et "confirmer mot de passe" ne sont pas identiques</h3></div>';
+			
+			if (isset($_GET['validEmail']))
+				echo '<div class="alert-danger"><h3>Email deja utilise</h3></div>';
+			
+			if (isset($_GET['validPseudo']))
+				echo '<div class="alert-danger"><h3>Pseudo deja utilise</h3></div>';?>
 			<h2 style="background-color:lightblue; padding:25px 20px">Inscrivez-vous !</h2>
 			<div class="form-group">
 				<label for="lastname">Nom:</label>

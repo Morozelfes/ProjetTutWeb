@@ -54,42 +54,62 @@
 		{
 			if(($_POST['mdp']) != ($_POST['confirm_mdp']))
 				$mdp_notidentical = true;
-			if (!$connection->validEmail($_POST['email']))
+			if (!$controller->validEmail($_POST['email']))
 				$validEmail = false;
-			if (!$connection->validPseudo($_POST['email']))
+			if (!$controller->validPseudo($_POST['pseudo']))
 				$validPseudo = false;
 		}
 		
 		if($inscriptionMissing)
-			header('location: Views/Inscription.php?insciptionMissing=true');
-		elseif($mdp_notidentical)
-			header('location: Views/Inscription.php?mdp_notidentical=true');
-		elseif(!$validEmail)
-			header('location: Views/Inscription.php?validEmail=false');
-		elseif(!$validPseudo)
-			header('location: Views/Inscription.php?validPseudo=false');
-		
-		else
 		{
-			$_SESSION['pseudo'] = $_POST['pseudo'];
-			$_SESSION['mdp'] = $_POST['mdp'];
-		}	
+			header('location: Views/Inscription.php?inscriptionMissing=true');
+			exit(0);
+		}
+			
+		if($mdp_notidentical)
+		{
+			header('location: Views/Inscription.php?mdp_notidentical=true');
+			exit(0);
+		}
+			
+		if(!$validEmail)
+		{
+			header('location: Views/Inscription.php?validEmail=false');
+			exit(0);
+		}
+			
+		if(!$validPseudo)
+		{
+			header('location: Views/Inscription.php?validPseudo=false');
+			exit(0);
+		}
+			
+
+		$_SESSION['pseudo'] = $_POST['pseudo'];
+		$_SESSION['mdp'] = $_POST['mdp'];
 	}
 	
 	
 	
 	if(!loggedIn())
 	{
-
-		if($mistake)
-			header('location: Views/Connection.php?mistake=true');
+		if(!isset($_GET['inscription']));
+		{
+			if($mistake)
+			{
+				header('location: Views/Connection.php?mistake=true');
+				exit(0);
+			}
+				
 		
-		elseif($missing)
-			header('location: Views/Connection.php?missing=true');
+			if($missing)
+			{
+				header('location: Views/Connection.php?missing=true');
+				exit(0);
+			}
+		}
 		
-		else 
-			header('location: Views/Connection.php');
-		
+		header('location: Views/Connection.php');
 		exit(0);
 	}
 	

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 24 Mai 2016 à 14:31
+-- Généré le :  Mer 08 Juin 2016 à 10:55
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -81,6 +81,34 @@ CREATE TABLE IF NOT EXISTS `carte` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `carteechange`
+--
+
+DROP TABLE IF EXISTS `carteechange`;
+CREATE TABLE IF NOT EXISTS `carteechange` (
+  `id_trade` int(11) NOT NULL,
+  `id_carteD` int(11) NOT NULL,
+  `id_carteO` int(11) NOT NULL,
+  PRIMARY KEY (`id_trade`,`id_carteD`,`id_carteO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `echange`
+--
+
+DROP TABLE IF EXISTS `echange`;
+CREATE TABLE IF NOT EXISTS `echange` (
+  `id_trade` int(11) NOT NULL AUTO_INCREMENT,
+  `id_membre` int(11) NOT NULL,
+  `confirmed` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_trade`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `membre`
 --
 
@@ -98,7 +126,14 @@ CREATE TABLE IF NOT EXISTS `membre` (
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `email_2` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `membre`
+--
+
+INSERT INTO `membre` (`id_membre`, `nom`, `prenom`, `email`, `mdp`, `pseudo`, `admin`) VALUES
+(5, 'Singery', 'Oliver', 'o.lis.ing@hotmail.fr', '21304089', 'oliver', 1);
 
 -- --------------------------------------------------------
 
