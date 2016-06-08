@@ -4,7 +4,12 @@
 		max-width:400px;
 		margin: 100px auto 0;
 		box-shadow: 6px 6px 0px black;
+		border: 2px solid black;
 		padding: 0 0 20px 0;
+	}
+	
+	.inside-form{
+		padding: 12px 12px 12px 12px;
 	}
 /*
 	.login-body {
@@ -36,13 +41,14 @@
 
 	.navbar {
 		margin-bottom: 0;
-		background-color: #0099cc;
+		background-color: #2E9AFE;
 		z-index: 9999;
 		border: 0;
 		font-size: 12px !important;
 		line-height: 1.42857143 !important;
 		letter-spacing: 4px;
 		border-radius: 0;
+}
 	}
 
 	.navbar li a, .navbar .navbar-brand {
