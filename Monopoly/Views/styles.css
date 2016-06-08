@@ -1,6 +1,35 @@
 
+
+	.card{
+		
+		width: ;
+		height: ;
+		position: relative;
+	}
+	
+	.card-header{
+		
+		height:20px;
+		width: 100%;
+		position: absolute;
+		
+	}
+	
+	.mainDiv{
+		
+		background-color:white;
+		max-width:1000px;
+		margin: 100px auto 0;
+		box-shadow: 6px 6px 0px black;
+		border: 2px solid black;
+		padding: 0 0 20px 0;
+		
+		
+	}
+	
 	.login-form {
 		
+		background-color:white;
 		max-width:400px;
 		margin: 100px auto 0;
 		box-shadow: 6px 6px 0px black;
@@ -11,17 +40,11 @@
 	.inside-form{
 		padding: 12px 12px 12px 12px;
 	}
-/*
+
 	.login-body {
-		
-		background-image:url(images/monop2.png);
-		background-color: white;
-		background-position: center center;
-		background-repeat: no-repeat;
-		min-height: 800px;
-		
+		background-color: #0080FF;
 	}
-*/
+
 
 	.container-fluid{
 		
@@ -39,30 +62,39 @@
 		
 	}
 
+	.navbar-brand{		
+		color: white;
+	}
+	
+	
 	.navbar {
 		margin-bottom: 0;
-		background-color: #2E9AFE;
+		background-color: #0080FF;
 		z-index: 9999;
-		border: 0;
 		font-size: 12px !important;
 		line-height: 1.42857143 !important;
-		letter-spacing: 4px;
-		border-radius: 0;
+		letter-spacing: 3px;
+		border: 2px solid black;
+		color: white !important;
 }
 	}
 
 	.navbar li a, .navbar .navbar-brand {
-		color: #fff !important;
+		color: white !important;
 	}
-/*
+	
+	.navbar li a, .navbar .navbar-nav {
+		color: white !important;
+	}
+
 	.navbar-nav li a:hover, .navbar-nav li.active a {
-		color: #f4511e !important;
+		color: #0080FF !important;
 		background-color: #fff !important;
 	}
-*/
+
 	.navbar-default .navbar-toggle {
-		border-color: transparent;
-		color: #fff !important;
+		border: 2px solid black;
+		color: white !important;
 	}
 	
 	.jumbotron { 

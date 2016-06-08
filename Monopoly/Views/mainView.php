@@ -11,7 +11,18 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	
-	<body>
-	<?php include 'Navbar.php';?>
+	<body class="login-body">
+		<?php include 'Navbar.php';?>
+		<div class="mainDiv">
+			<h2 style="text-align:center">Mes cartes</h2>
+			
+			<hr style="background-color: black; line-height:2">
+			
+			<div>
+			
+			
+			</div>
+		
+		</div>
 	</body>
 	

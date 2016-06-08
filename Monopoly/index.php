@@ -113,7 +113,7 @@
 		exit(0);
 	}
 	
-	
+	include('Views/index.php');
 			
 		
 ?>

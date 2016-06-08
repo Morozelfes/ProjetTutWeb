@@ -1,10 +1,10 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Monopoly</a>
     </div>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav navbar-left">
       <li><a href="#">Mes cartes</a></li>
       <li><a href="#">Proposer echange</a></li>
       <li><a href="#">Mes echanges</a></li>
