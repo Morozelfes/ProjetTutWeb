@@ -3,6 +3,8 @@
 		
 		max-width:400px;
 		margin: 100px auto 0;
+		box-shadow: 6px 6px 0px black;
+		padding: 0 0 20px 0;
 	}
 /*
 	.login-body {
@@ -61,3 +63,16 @@
     background-color: #0099cc;
     color: #ffffff;
 	}
+	
+	
+	.alert-danger{
+		
+		max-width: 400px;
+		padding: 10px 20px 10px 20px;
+		
+	}
+	
+	
+	
+	
+	

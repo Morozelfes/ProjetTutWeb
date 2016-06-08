@@ -50,11 +50,11 @@ class Controller
 	}
 	
 	
-	public function addMember($name,$surname,$mail,$psw,$nick,$adm)
+	public function addMember($name,$surname,$mail,$psw,$nick)
 	{
 		try
 		{
-			MemberDAO::getInstance()->addMember($name,$surname,$mail,$psw,$nick,$adm);
+			MemberDAO::getInstance()->addMember($name,$surname,$mail,$psw,$nick);
 			$this->updateData();
 			return true;
 		}
@@ -112,11 +112,11 @@ class Controller
 		}
 	}
 	
-	public function validConnection()
+	public function validConnection($pseudo, $mdp)
 	{
 		try
 		{
-			if (MemberDAO::getInstance()->testConnection == 1)
+			if (MembreDAO::getInstance()->testConnexion($pseudo, $mdp) == 1)
 				return true;
 			else
 				return false;
@@ -126,6 +126,38 @@ class Controller
 			die('Error: '.$e->getMessage());
 		}
 	}
+	
+	public function validEmail($email)
+	{
+		try
+		{
+			if (MembreDAO::getInstance()->testMail($email) == 1)
+				return false;
+			else
+				return true;
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	public function validPseudo($pseudo)
+	{
+		try
+		{
+			if (MembreDAO::getInstance()->testPseudo($pseudo) == 1)
+				return false;
+			else
+				return true;
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	
 	
 	
 	
