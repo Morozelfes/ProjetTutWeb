@@ -85,21 +85,6 @@ class CarteDAO
 		return $resultArray;
 	}
 
-/*	
-	public function findDistrict($couleur)
-	{
-		$statement = $this->connection->prepare("SELECT * FROM quartier WHERE couleur = :couleur ;");
-		$statement->bindParam(':couleur',$couleur);
-		$statement->execute();
-		$resultArray = $statement->fetchAll();
-		
-		return $resultArray;
-	}
-	
-	
-		-->  INUTILE CAR UNE ID CORRRESPOND A UNE COULEUR(QUARTIER)
-*/	
-
 	public function getDistrictByColor($color)
 	{
 		$statement = $this->connection->prepare("SELECT id_quartier FROM quartier WHERE couleur = :couleur;");
