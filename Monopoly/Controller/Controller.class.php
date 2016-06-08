@@ -293,6 +293,45 @@ class Controller
 	}
 	
 	
+	public function getAdressById($id)
+	{
+		try
+		{
+			return CarteDAO::getInstance()->getAdressById();
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+		
+	}
+	
+	public function getColorByCardId($id)
+	{
+		try
+		{
+			return CarteDAO::getInstance()->getColorByCardId($id);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+		
+	}
+	
+	public function getMemberIdByPseudo($pseudo)
+	{
+		try
+		{
+			return MembreDAO::getInstance()->getMemberIdByPseudo($pseudo);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
 	
 	
 	

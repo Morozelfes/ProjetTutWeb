@@ -18,9 +18,17 @@
 			
 			<hr style="background-color: black; line-height:2">
 			
-			<div>
-			
-			
+			<div> 
+			<?php
+				foreach($playersCards as $card)
+				{
+					$address = $contoller->getAdressById($card['id']);
+					$color = $controller->getColorById($card['id']);
+					?>
+					<div class="card">
+						<div class="card-header card-header-<?=$color?>"><?=$address?></div>
+					</div><?php				
+				}?>
 			</div>
 		
 		</div>

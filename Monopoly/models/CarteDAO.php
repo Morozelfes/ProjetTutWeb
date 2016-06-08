@@ -98,19 +98,34 @@ class CarteDAO
 
 	//SI CA MARCHE PAS TESTER AVEC TABLEAU  (EN DESSOUS GROS)
 	
-	public function findAdd($id)
+	public function getAdressById($id)
 	{
 		$statement = $this->connection->prepare("SELECT id_adresse FROM carte WHERE id_carte = :id;");
 		$statement->bindParam(':id',$id);
 		$statement->execute();		
+		
 		$result = $statement->fetch();
+	}
+	
+	
+	public function getColorById($id)
+	{
+		$result = $this->getAdressById($id);
 			
-		$statement = $this->connection->prepare("SELECT adresse.nom, quartier.couleur FROM adresse,quartier  WHERE id_adresse = :idadd AND adresse.id_quartier = quartier.id_quartier;");
+			
+		$statement = $this->connection->prepare("SELECT couleur FROM quartier, adresse WHERE quartier.id_quartier = adresse.id_quartier AND id_adresse = :id;");
 		$statement->bindParam(':id',$result);
 		$statement->execute();
-		$resultArray = $statement->fetchAll();
+		$resultColor = $statement->fetch();
 		
-		return $resultArray;
+		return $resultColor;
+	}
+	
+	
+	
+	public function getColorByCardId($id)
+	{
+		
 	}
 	
 	public function updateOwner($idtaker,$idcarte)

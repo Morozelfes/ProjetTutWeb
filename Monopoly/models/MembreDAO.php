@@ -140,6 +140,17 @@ class MembreDAO
 		$statement->execute();	
 		return $statement->rowCount();
 	}
+	
+	public function getMemberIdByPseudo($pseudo)
+	{
+		$statement = $this->connection->prepare("SELECT id from membre WHERE pseudo = :pseudo");
+		$statement->bindParam(':pseudo', $pseudo);
+		$statement->execute();	
+		
+		return $statement->find();
+		
+	}
+	
 	}
 	
 	

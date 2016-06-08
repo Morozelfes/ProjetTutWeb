@@ -2,9 +2,11 @@
 
 	.card{
 		
-		width: ;
-		height: ;
+		width:60px ;
+		height:120px ;
 		position: relative;
+		border: 2px solid black;
+		box-shadow:6px 6px 0px black;
 	}
 	
 	.card-header{
@@ -13,6 +15,38 @@
 		width: 100%;
 		position: absolute;
 		
+	}
+	
+	.card-header-violet{
+		background-color: #A901DB;
+	}
+	
+	.card-header-turquoise{
+		background-color: #2ECCFA;
+	}
+	
+	.card-header-fushia{
+		background-color: #FE2EF7;
+	}
+	
+	.card-header-orange{
+		background-color: #FF8000;
+	}
+	
+	.card-header-rouge{
+		background-color: #FF0000;
+	}
+	
+	.card-header-jaune{
+		background-color: #FFFF00;
+	}
+	
+	.card-header-vert{
+		background-color: #04B404;
+	}
+	
+	.card-header-bleu{
+		background-color: #0101DF;
 	}
 	
 	.mainDiv{
