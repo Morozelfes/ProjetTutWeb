@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 
-<html>
-
-	<head>
-		<title>Mon Monopoly</title>
-		<link href="styles.css" rel="stylesheet">
-		<link href="assets/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	</head>
-	
-	<body class="login-body">
-		<?php include 'Navbar.php';?>
+<body class="login-body">	
 		<div class="mainDiv">
 			<h2 style="text-align:center">Mes cartes</h2>
 			
 			<hr style="background-color: black; line-height:2">
-			
+		
 			<div> 
-			<?php
+				<table>
+				<?php
+				$i = 0;
 				foreach($playersCards as $card)
 				{
-					$address = $contoller->getAdressById($card['id']);
-					$color = $controller->getColorById($card['id']);
+					
+					$address = $controller->getAddNameById($card['id_carte']);
+					$color = $controller->getColorByCardId($card['id_carte']);
+					if($i==0)
+						echo '<tr>';
 					?>
-					<div class="card">
-						<div class="card-header card-header-<?=$color?>"><?=$address?></div>
-					</div><?php				
+					<td>
+						<div class="card">
+							<div class="card-header card-header-<?=$color?>"><strong><?=$address?></strong></div>
+						</div>
+					</td>
+					<td>
+						<div style="width:15px"></div>
+					<td>	
+						<?php
+					$i++;
+					if($i==3)
+					{
+						echo'</tr>';
+						$i=0;
+					}
 				}?>
 			</div>
 		
 		</div>
-	</body>
+</body>
 	

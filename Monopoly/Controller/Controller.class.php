@@ -1,14 +1,30 @@
 <?php
+$PROJECT_FILE = dirname(__FILE__).'/';
 
-include_once('models/CarteDAO.php');
-include_once('models/MembreDAO.php');
+include_once($PROJECT_FILE.'../models/CarteDAO.php');
+include_once($PROJECT_FILE.'../models/MembreDAO.php');
 
 class Controller
 {
 	
 	private $cards;
 	private $members;
+	
+	private static $member;
+	
+	
+	
+	public function setUserInformation($pseudo)
+	{
 		
+		print_r(self::$member = $this->getMemberByPseudo($pseudo));
+		exit(0);
+	}
+	
+	public static function getUserInformation()
+	{
+		return self::$member;
+	}
 	
 	
 	public function __construct()
@@ -40,7 +56,7 @@ class Controller
 	{
 		try
 		{
-			return MemberDAO::findMember($id);
+			return MembreDAO::getInstance()->findMember($id);
 		}
 		catch(PDOException $e)
 		{
@@ -50,11 +66,26 @@ class Controller
 	}
 	
 	
+	public function getMemberByPseudo($pseudo)
+	{
+		try
+		{
+			return MembreDAO::getInstance()->findMemberByPseudo($pseudo);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+	}
+	
+	
+	
 	public function addMember($name,$surname,$mail,$psw,$nick)
 	{
 		try
 		{
-			MemberDAO::getInstance()->addMember($name,$surname,$mail,$psw,$nick);
+			MembreDAO::getInstance()->addMember($name,$surname,$mail,$psw,$nick);
 			$this->updateData();
 			return true;
 		}
@@ -70,7 +101,7 @@ class Controller
 	{		
 		try
 		{
-			MemberDAO::getInstance()->deleteMember($id);
+			MembreDAO::getInstance()->deleteMember($id);
 			$this->updateData();
 			return true;
 		}
@@ -86,7 +117,7 @@ class Controller
 	{
 		try
 		{
-			MemberDAO::getInstance()->updateMember($key, $value, $id);
+			MembreDAO::getInstance()->updateMember($key, $value, $id);
 			$this->updateData();
 			return true;
 		}
@@ -103,7 +134,7 @@ class Controller
 	{
 		try
 		{
-			return MemberDAO::getInstance()->findAdmin();
+			return MembreDAO::getInstance()->findAdmin();
 		}
 		catch(PDOException $e)
 		{
@@ -181,7 +212,7 @@ class Controller
 	{
 		try
 		{
-			return CarteDAO::getInstance()->getCardFromOwner($idOwner);
+			return CarteDAO::getInstance()->findCardFromOwner($idOwner);
 		}
 		catch(PDOException $e)
 		{
@@ -297,7 +328,22 @@ class Controller
 	{
 		try
 		{
-			return CarteDAO::getInstance()->getAdressById();
+			return CarteDAO::getInstance()->getAdressById($id);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+			return false;
+		}
+		
+	}
+	
+	
+	public function getAddNameById($id)
+	{
+		try
+		{
+			return CarteDAO::getInstance()->getAddNameById($id);
 		}
 		catch(PDOException $e)
 		{
@@ -311,7 +357,7 @@ class Controller
 	{
 		try
 		{
-			return CarteDAO::getInstance()->getColorByCardId($id);
+			return CarteDAO::getInstance()->getColorById($id);
 		}
 		catch(PDOException $e)
 		{

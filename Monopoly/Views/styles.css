@@ -2,8 +2,8 @@
 
 	.card{
 		
-		width:60px ;
-		height:120px ;
+		width:150px ;
+		height:200px ;
 		position: relative;
 		border: 2px solid black;
 		box-shadow:6px 6px 0px black;
@@ -11,10 +11,10 @@
 	
 	.card-header{
 		
-		height:20px;
+		height:35px;
 		width: 100%;
 		position: absolute;
-		
+		text-align: center;
 	}
 	
 	.card-header-violet{
@@ -56,7 +56,7 @@
 		margin: 100px auto 0;
 		box-shadow: 6px 6px 0px black;
 		border: 2px solid black;
-		padding: 0 0 20px 0;
+		padding: 0 0 20px 50px;
 		
 		
 	}

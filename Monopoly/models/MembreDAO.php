@@ -101,10 +101,25 @@ class MembreDAO
 		$statement->bindParam(':id',$id);
 		$statement->execute();
 		
+		$resultArray = $statement->fetch();
+		
+		return $resultArray;
+	}
+	
+	
+	public function findMemberByPseudo($pseudo)
+	{
+		$statement = $this->connection->prepare("SELECT * FROM membre WHERE pseudo = :pseudo;");
+		$statement->bindParam(':pseudo',$pseudo);
+		$statement->execute();
+		
 		$resultArray = $statement->fetchAll();
 		
 		return $resultArray;
 	}
+	
+	
+	
 	
 	public function findAdmin()
 	{
@@ -143,11 +158,11 @@ class MembreDAO
 	
 	public function getMemberIdByPseudo($pseudo)
 	{
-		$statement = $this->connection->prepare("SELECT id from membre WHERE pseudo = :pseudo");
+		$statement = $this->connection->prepare("SELECT id_membre from membre WHERE pseudo = :pseudo");
 		$statement->bindParam(':pseudo', $pseudo);
 		$statement->execute();	
 		
-		return $statement->find();
+		return $statement->fetch()['id_membre'];
 		
 	}
 	

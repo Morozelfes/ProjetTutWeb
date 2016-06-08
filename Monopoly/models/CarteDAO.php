@@ -93,7 +93,7 @@ class CarteDAO
 		
 		$result = $statement->fetch();
 		
-		return $result;
+		return $result['id_quartier'];
 	}
 
 	//SI CA MARCHE PAS TESTER AVEC TABLEAU  (EN DESSOUS GROS)
@@ -105,6 +105,20 @@ class CarteDAO
 		$statement->execute();		
 		
 		$result = $statement->fetch();
+		return $result['id_adresse'];
+	}
+	
+	public function getAddNameById($id)
+	{
+		$id = $this->getAdressById($id);
+		
+		$statement = $this->connection->prepare("SELECT nom FROM adresse WHERE id_adresse = :id;");
+		$statement->bindParam(':id',$id);
+		$statement->execute();		
+		
+		$result = $statement->fetch();
+		return $result['nom'];
+		
 	}
 	
 	
@@ -118,15 +132,11 @@ class CarteDAO
 		$statement->execute();
 		$resultColor = $statement->fetch();
 		
-		return $resultColor;
+		return $resultColor['couleur'];
 	}
 	
 	
-	
-	public function getColorByCardId($id)
-	{
-		
-	}
+
 	
 	public function updateOwner($idtaker,$idcarte)
 	{

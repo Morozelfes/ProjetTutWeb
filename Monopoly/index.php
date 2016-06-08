@@ -11,6 +11,9 @@
 	$validEmail = true;
 	$validPseudo = true;
 	
+
+	
+	
 	if(isset($_GET['connection']))
 	{
 			if(		(isset($_POST['mdp']) and !empty($_POST['mdp']))	 AND	 (isset($_POST['pseudo']) and !empty($_POST['pseudo']))	)
@@ -23,6 +26,9 @@
 				{
 					$_SESSION['pseudo'] = $pseudo;
 					$_SESSION['mdp'] = $mdp;
+					
+					$controller->setUserInformation($pseudo);
+					
 				}
 			
 			}
@@ -113,7 +119,7 @@
 		exit(0);
 	}
 	
-	include('Views/index.php');
+	header('location:Views/index.php');
 			
 		
 ?>
