@@ -162,7 +162,7 @@ class MembreDAO
 		$statement->bindParam(':pseudo', $pseudo);
 		$statement->execute();	
 		
-		return $statement->fetch()['id_membre'];
+		return intval($statement->fetch()['id_membre']);
 		
 	}
 	

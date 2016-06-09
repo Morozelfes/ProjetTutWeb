@@ -29,7 +29,8 @@
 		
 		</div>
 	
-		<form role="form" method="post" action='mesechanges.controller.php?proposition=true'>
+		
+		<form role="form" method="post" action='mesechanges.controller.php?proposition=true&selected=<?php if(isset($selectedPlayerId)) echo $selectedPlayerId; else echo 'null';?>'>
 			<div class="echange-proposition">
 			
 				<div class="echange-header"><h2>Je propose:</h3></div>
@@ -37,7 +38,7 @@
 				<div class="echange-form-one">
 					
 						<div class="form-group" id="propositions" class="my-selection-cards">							
-							<select class="form-control">
+							<select class="form-control" name="selected-card1">
 								<option></option>
 								<?php
 								foreach($playerCards as $card)
@@ -67,7 +68,7 @@
 
 						<div class="form-group" id="wantings">
 						
-							<select class="form-control" name="other-selection">
+							<select class="form-control" name="other-selected-card1">
 								<option></option>
 								<?php
 								if (isset($selectedPlayersCards))

@@ -7,7 +7,7 @@
     <ul class="nav navbar-nav navbar-left">
       <li><a href="../../Monopoly/index.php">Mes cartes</a></li>
       <li><a href="../Controller/echanges.controller.php">Proposer echange</a></li>
-      <li><a href="#">Mes echanges</a></li>
+      <li><a href="../Controller/mesechanges.controller.php">Mes echanges</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="../Controller/disconnect.php"><span class="glyphicon glyphicon-log-out"></span> Se deconnecter</a></li>

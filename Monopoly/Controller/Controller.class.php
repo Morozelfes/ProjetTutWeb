@@ -406,6 +406,88 @@ class Controller
 		}
 	}
 	
+	public function getAddIdByName($name)
+	{
+		try
+		{
+			return CarteDAO::getInstance()->getAddIdByName($name);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	
+	public function getCardByPlayerAndAddress($memberId,$addName)
+	{
+		$cards = $this->getCardByOwner($memberId);
+		
+		foreach($cards as $card)
+		{
+			if($card['id_adresse'] == $this->getAddIdByName($addName))
+				return intval($card['id_carte']);
+		}
+		return false;
+	}
+	
+	public function findTradePerso($id)
+	{
+		try
+		{
+			return TradeDAO::getInstance()->findTradePerso($id);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	public function findCardTrade($id)
+	{
+		try
+		{
+			return TradeDAO::getInstance()->findCarteTrade($id);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	
+	public function findTrade($id)
+	{
+		try
+		{
+			return TradeDAO::getInstance()->findTrade($id);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	public function dealTrade($id)
+	{
+		try
+		{
+			TradeDAO::getInstance()->dealTrade($id);
+			
+			echo $demandeur = $this->findTrade($id)['id_membre']; //6
+			echo $receveur = $this->findTrade($id)['id_receveur']; //5
+			echo $carteD = $this->findCardTrade($id)['id_carteD'];//3
+			echo $carteO = $this->findCardTrade($id)['id_carteO'];//2
+			
+			$this->updateOwner($demandeur, $carteO);
+			$this->updateOwner($receveur, $carteD);
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
 	
 	
 	

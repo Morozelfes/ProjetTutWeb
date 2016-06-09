@@ -40,6 +40,19 @@ class TradeDAO
 		return $resultArray;
 	}
 	
+	
+	public function findTrade($id)
+	{
+		$statement = $this->connection->prepare("SELECT * FROM echange WHERE id_trade = :id ;");
+		$statement->bindParam(':id', $id);
+		$statement->execute();
+		
+		$resultArray = $statement->fetch();
+		
+		return $resultArray;
+	}
+	
+	
 	public function addTrade($id_membre,$id_receveur)
 	{
 		$statement = $this->connection->prepare("INSERT INTO  echange (id_membre,id_receveur,confirmed) VALUES (:membre, :receveur,0) ;");
@@ -63,19 +76,22 @@ class TradeDAO
 	
 	public function lastTrade()
 	{
-		$statement = $this->connection->prepare("SELECT id_trade FROM echange ORDER BY desc LIMIT 1;");
+		$statement = $this->connection->prepare("SELECT id_trade FROM echange ORDER BY id_trade DESC LIMIT 1;");
 		$statement->execute();
-		$lastInsertId = $statement->fetch(PDO::FETCH_OBJ)->Id_trade;
-		return $lastInsertId;
+		$lastInsertId = $statement->fetch();
+		return intval($lastInsertId['id_trade']);
 	}
 	
 	public function addCarteEchange($id_carteDemande,$id_CarteOffre)
 	{
-		$trade =  lastTrade();
+		$id_carteDemande = intval($id_carteDemande);
+		$id_CarteOffre = intval($id_CarteOffre);
+		
+		$trade =  $this->lastTrade();
 		$statement = $this->connection->prepare("INSERT INTO  carteechange (id_trade,id_CarteD,id_CarteO) VALUES (:trade,:CD,:CO) ;");
 		$statement->bindParam(':trade',  $trade);
-		$statement->bindParam(':CD', $CD);
-		$statement->bindParam(':CO', $CO);
+		$statement->bindParam(':CD', $id_carteDemande);
+		$statement->bindParam(':CO', $id_CarteOffre);
 		$statement->execute();
 		
 	}
@@ -89,7 +105,7 @@ class TradeDAO
 	
 	public function dealTrade($id)
 	{
-		$statement = $this->connection->prepare("UPDATE  echange SET confirmed = 1 WHERE id_trade = :id;" );
+		$statement = $this->connection->prepare("UPDATE echange SET confirmed = 1 WHERE id_trade = :id;" );
 		$statement->bindParam(':id',$id);
 		$statement->execute();
 	}
@@ -102,7 +118,7 @@ class TradeDAO
 		
 		$resultArray = $statement->fetchAll();
 		
-		return $resultArray;
+		return $resultArray[0];
 	}
 	
 	}

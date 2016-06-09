@@ -31,5 +31,5 @@ if(isset($_GET['playerselect']))
 	</head>
 <?php
 
-//include_once('../Views/Navbar.php');
+include_once('../Views/Navbar.php');
 include_once('../Views/echanges.php');

@@ -93,7 +93,7 @@ class CarteDAO
 		
 		$result = $statement->fetch();
 		
-		return $result['id_quartier'];
+		return intval($result['id_quartier']);
 	}
 
 	//SI CA MARCHE PAS TESTER AVEC TABLEAU  (EN DESSOUS GROS)
@@ -105,7 +105,7 @@ class CarteDAO
 		$statement->execute();		
 		
 		$result = $statement->fetch();
-		return $result['id_adresse'];
+		return intval($result['id_adresse']);
 	}
 	
 	public function getAddNameById($id)
@@ -119,6 +119,17 @@ class CarteDAO
 		$result = $statement->fetch();
 		return $result['nom'];
 		
+	}
+	
+	
+	public function getAddIdByName($name)
+	{
+		$statement = $this->connection->prepare("SELECT id_adresse FROM adresse WHERE nom = :nom;");
+		$statement->bindParam(':nom',$name);
+		$statement->execute();		
+		
+		$result = $statement->fetch();
+		return intval($result['id_adresse']);
 	}
 	
 	
@@ -142,9 +153,9 @@ class CarteDAO
 	{
 		if($idcarte != 0) 
 		{
-			$statement = $this->connection->prepare("UPDATE  carte SET id_membre = :idmembre WHERE id_carte = :id;" );
+			$statement = $this->connection->prepare("UPDATE carte SET id_membre = :idmembre WHERE id_carte = :id;" );
 			$statement->bindParam(':idmembre', $idtaker);
-			$statement->bindParam(':idcarte',$idcarte);
+			$statement->bindParam(':id',$idcarte);
 			$statement->execute();
 		}
 	}
