@@ -17,8 +17,7 @@ class Controller
 	public function setUserInformation($pseudo)
 	{
 		
-		print_r(self::$member = $this->getMemberByPseudo($pseudo));
-		exit(0);
+		self::$member = $this->getMemberByPseudo($pseudo);
 	}
 	
 	public static function getUserInformation()

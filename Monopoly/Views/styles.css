@@ -61,22 +61,81 @@
 		
 	}
 	
-	.login-form {
-		
+	.echange-proposition{
 		background-color:white;
-		max-width:400px;
+		width:500px;
+		height:500px;
 		margin: 100px auto 0;
 		box-shadow: 6px 6px 0px black;
 		border: 2px solid black;
-		padding: 0 0 20px 0;
+		
 	}
+	
+	.echange-form{
+		
+		padding: 12px 12px 12px 12px;
+		position: absolute;
+		width: 450px;
+		top: 110px;
+		
+		
+	}
+	
+	.echange-header{
+	    background-color: lightblue;
+		height: 75px;
+		position: absolute;
+		width: 496;
+		text-align: center;
+	}
+	
+	
+	.login-form {
+		
+		background-color:white;
+		width:500px;
+		height:500px;
+		margin: 100px auto 0;
+		box-shadow: 6px 6px 0px black;
+		border: 2px solid black;
+	}
+	
+	
 	
 	.inside-form{
 		padding: 12px 12px 12px 12px;
+		position: absolute;
+		width: 450px;
+		top: 110px;
+	}
+	
+	.inside-form-inscription{
+		padding: 12px 12px 12px 20px;
+		position: absolute;
+		width: 450px;
+		top: 220px;
 	}
 
 	.login-body {
 		background-color: #0080FF;
+	}
+	
+	.form-header{	
+		background-color: lightblue;
+		position: absolute;
+		height: 100px;
+		width: 496px;
+		text-align: center;
+	}
+	
+	.inscription-form{
+		background-color:white;
+		width:500px;
+		height:770px;
+		margin: 100px auto 0;
+		box-shadow: 6px 6px 0px black;
+		border: 2px solid black;
+		
 	}
 
 
@@ -84,6 +143,11 @@
 		
 		padding: 60px 50px;
 		
+	}
+	
+	.container{
+		
+		position: relative;
 	}
 	
 	.img-container{
@@ -131,18 +195,44 @@
 		color: white !important;
 	}
 	
-	.jumbotron { 
-    background-color: #0099cc;
-    color: #ffffff;
+	.jumbotron { 		background-color: #0099cc;
+		color: #ffffff;
+
 	}
 	
 	
-	.alert-danger{
+	.alert-danger-login{
 		
-		max-width: 400px;
-		padding: 10px 20px 10px 20px;
+		color: #a94442;
+		background-color: #f2dede;
+		border-color: #ebccd1;
+		top: 350px;
+		position: absolute;
+		padding: 0 20px 7px 20px;
+		border-radius: 7px;
+		border: 2px solid;
+	}
+	
+	.alert-danger-inscription{
+		color: #a94442;
+		background-color: #f2dede;
+		border-color: #ebccd1;
+		top: 740px;
+		left: 380px;
+		position: absolute;
+		padding: 0 20px 7px 20px;
+		border-radius: 7px;
+		border: 2px solid;
 		
 	}
+	
+	.player-select{
+		
+		
+		
+		
+	}
+	
 	
 	
 	

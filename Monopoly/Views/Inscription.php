@@ -16,21 +16,22 @@
 	<div class="container">
 		
 	
-		<form role="form" class="login-form" autocomplete="off" method="post" action="../index.php?inscription=true">
-		<?php
-			if (isset($_GET['inscriptionMissing']))
-				echo '<div class="alert-danger"><h3>Il faut remplir tous les champs !</h3></div>';
-			
-			if (isset($_GET['mdp_notidentical']))
-				echo '<div class="alert-danger"><h3>Les champs "mot de passe" et "confirmer mot de passe" ne sont pas identiques</h3></div>';
-			
-			if (isset($_GET['validEmail']))
-				echo '<div class="alert-danger"><h3>Email deja utilise</h3></div>';
-			
-			if (isset($_GET['validPseudo']))
-				echo '<div class="alert-danger"><h3>Pseudo deja utilise</h3></div>';?>
-			<h2 style="background-color:lightblue; padding:25px 20px">Inscrivez-vous !</h2>
-			<div class="inside-form">
+		<form role="form" class="inscription-form" autocomplete="off" method="post" action="../index.php?inscription=true">
+			<?php
+					if (isset($_GET['inscriptionMissing']))
+						echo '<div class="alert-danger alert-danger-inscription"><h3>Il faut remplir tous les champs !</h3></div>';
+					
+					if (isset($_GET['mdp_notidentical']))
+						echo '<div class="alert-danger alert-danger-inscription"><h3>Les champs "mot de passe" et "confirmer mot de passe" ne sont pas identiques</h3></div>';
+					
+					if (isset($_GET['validEmail']))
+						echo '<div class="alert-danger alert-danger-inscription"><h3>Email deja utilise</h3></div>';
+					
+					if (isset($_GET['validPseudo']))
+						echo '<div class="alert-danger alert-danger-inscription"><h3>Pseudo deja utilise</h3></div>';?>
+		
+			<div class="form-header"><h2 style="background-color:lightblue; padding:25px 20px">Inscrivez-vous !</h2></div>
+			<div class="inside-form-inscription">
 				<div class="form-group">
 					<label for="lastname">Nom:</label>
 					<input type="text" class="form-control" id="lastname" placeholder="Entrez votre nom" name="lastname">
@@ -58,8 +59,11 @@
 				
 				<button type="submit" class="btn btn-default">Valider</button>
 				<button type="submit" class="btn btn-default">Annuler</button>
+				
+				
 			</div>
 		</form>
+		
 	</div>
 	
 	</body>
