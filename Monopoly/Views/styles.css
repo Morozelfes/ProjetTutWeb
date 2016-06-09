@@ -71,13 +71,21 @@
 		
 	}
 	
-	.echange-form{
+	.echange-form-one{
 		
 		padding: 12px 12px 12px 12px;
 		position: absolute;
 		width: 450px;
-		top: 110px;
+		top: 500px;
 		
+		
+	}
+	
+	.echange-form-two{
+		padding: 12px 12px 12px 12px;
+		position: absolute;
+		width: 450px;
+		top: 1100px;
 		
 	}
 	
@@ -228,10 +236,13 @@
 	
 	.player-select{
 		
-		
+	    padding: 20 100 0 30;
 		
 		
 	}
+	
+
+	
 	
 	
 	

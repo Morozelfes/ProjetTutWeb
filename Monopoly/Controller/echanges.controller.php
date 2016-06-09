@@ -12,6 +12,14 @@ $playerCards = $controller->getCardByOwner($playerId);
 
 $players = $controller->getMembers();
 
+if(isset($_GET['playerselect']))
+{
+	$selectedPlayerPseudo = $_POST['my-selection'];
+	$selectedPlayerId = $controller->getMemberIdByPseudo($selectedPlayerPseudo);
+	$selectedPlayersCards = $controller->getCardByOwner($selectedPlayerId);
+}
+	
+
 ?>
 <head>
 		<title>Mon Monopoly</title>
@@ -23,5 +31,5 @@ $players = $controller->getMembers();
 	</head>
 <?php
 
-include_once('../Views/Navbar.php');
+//include_once('../Views/Navbar.php');
 include_once('../Views/echanges.php');

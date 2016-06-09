@@ -3,6 +3,7 @@ $PROJECT_FILE = dirname(__FILE__).'/';
 
 include_once($PROJECT_FILE.'../models/CarteDAO.php');
 include_once($PROJECT_FILE.'../models/MembreDAO.php');
+include_once($PROJECT_FILE.'../models/TradeDAO.php');
 
 class Controller
 {
@@ -371,6 +372,33 @@ class Controller
 		try
 		{
 			return MembreDAO::getInstance()->getMemberIdByPseudo($pseudo);
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	
+	public function addTrade($id_membre, $id_receveur)
+	{
+		try
+		{
+			TradeDAO::getInstance()->addTrade($id_membre, $id_receveur);
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			die('Error: '.$e->getMessage());
+		}
+	}
+	
+	public function addCardTrade($id_carteDemande, $id_carteOffert)
+	{
+		try
+		{
+			TradeDAO::getInstance()->addCarteEchange($id_carteDemande, $id_carteOffert);
+			return true;
 		}
 		catch(PDOException $e)
 		{
